@@ -12,6 +12,7 @@ export default function Home() {
         <Link href="/add_todo">
           <Button>Add task</Button>
         </Link>
+        {/* this is hard-coded for testing navigation purposes, will be replaced with dynamic data */}
         <Link href="/task_details/1">Task 1</Link>
       </main>
     </div>
