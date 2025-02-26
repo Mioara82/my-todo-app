@@ -1,11 +1,27 @@
-import { create } from "zustand";
-import type { Todo } from "./types";
+import { createStore } from "zustand";
+import type { Todo } from "../types";
 
-const useTodos = create((set) => {
-  return {
-    todos: [],
+export type Todos = {
+  todos: Todo[];
+};
+
+export type TodosActions = {
+  addTodo: (todo: Todo) => void;
+  deleteTodo: (id: number) => void;
+  toggleTodo: (id: number) => void;
+};
+
+export type TodosStore = Todos & TodosActions;
+
+export const defaultState: Todos = {
+  todos: [],
+};
+
+export const createTodosStore = (initialState: Todos = defaultState) => {
+  return createStore<TodosStore>()((set) => ({
+    ...initialState,
     addTodo: (todo: Todo) =>
-      set((state: { todos: Todo[] }) => ({
+      set((state: Todos) => ({
         todos: [
           ...state.todos,
           {
@@ -21,16 +37,14 @@ const useTodos = create((set) => {
         ],
       })),
     deleteTodo: (id: number) =>
-      set((state: { todos: Todo[] }) => ({
+      set((state: Todos) => ({
         todos: state.todos.filter((todo: Todo) => todo.id !== id),
       })),
     toggleTodo: (id: number) =>
-      set((state: { todos: Todo[] }) => ({
+      set((state: Todos) => ({
         todos: state.todos.map((todo: Todo) =>
           todo.id === id ? { ...todo, isCompleted: !todo.isCompleted } : todo
         ),
       })),
-  };
-});
-
-export default useTodos;
+  }));
+};
