@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useThemeStore } from "@/lib/store/theme_store";
-import { applyThemePreference } from "../utils/theme_utils";
+import { applyThemePreference } from "../../app/utils/theme_utils";
 import type { ThemeStoreState } from "@/lib/store/theme_store";
 
 export function useTheme() {

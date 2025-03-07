@@ -1,6 +1,6 @@
 "use client";
 import { useThemeStore } from "@/lib/store/theme_store";
-import { useTheme } from "../hooks/useTheme";
+import { useTheme } from "../../lib/hooks/useTheme";
 import type { ThemeStoreActions } from "@/lib/store/theme_store";
 import { Button } from "@/components/ui/button";
 import { THEME_TYPES } from "@/constants";
