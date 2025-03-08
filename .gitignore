@@ -42,3 +42,12 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Ignore macOS system files
+.AppleDouble
+.LSOverride
+
+# Ignore editor and environment files
+.vscode/
+.idea/
+*.swp
